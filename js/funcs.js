@@ -24,7 +24,15 @@ function getDayPapersCallback(data) {
 		createFolder(folder);
 		downloadFile(folder,src,data[x]["image"]);
 		
-		$("#home ul.papers").append("<li><img src='"+src+"' /><h1>"+data[x]["title"]+"</h1></li>");
+		if(!file_exists(rooAddress+data[x]["date_id"]+"/"+data[x]["image"])) {
+			imgSrc = src;	
+		} else {
+			imgSrc = rooAddress+data[x]["date_id"]+"/"+data[x]["image"]);
+		}
+		console.log(imgSrc);
+		
+		
+		$("#home ul.papers").append("<li><img src='"+imgSrc+"' /><h1>"+data[x]["title"]+"</h1></li>");
 	}
 	var count = $("#home ul.papers li").length;
 	var width = count * (parseInt($("#home ul.papers li").width())+24);

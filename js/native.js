@@ -1,3 +1,5 @@
+rooAddress = getRooAddress();
+//==============================================
 function createFolder(name) {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
 
@@ -32,6 +34,23 @@ function downloadFile(folder, file, name) {
 	}, fail);
 
 }
+
+function getRooAddress() {
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
+
+		fileSystem.root.getFile(folder + "dummy.html", {
+			create : true,
+			exclusive : false
+		}, function gotFileEntry(fileEntry) {
+			var sPath = fileEntry.fullPath.replace("dummy.html", "");
+			rooAddress = sPath;
+			fileEntry.remove();
+			
+		}, fail);
+	}, fail);
+
+}
+
 
 
 function fail(evt) {
