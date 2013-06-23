@@ -22,11 +22,11 @@ function downloadFile(folder, file, name) {
 			fileEntry.remove();
 
 			fileTransfer.download(file, sPath + name, function(theFile) {
-				alert(">>" + theFile.toURI());
+				console.log(">>" + theFile.toURI());
 			}, function(error) {
-				alert("download error source " + error.source);
-				alert("download error target " + error.target);
-				alert("upload error code: " + error.code);
+				console.log("download error source " + error.source);
+				console.log("download error target " + error.target);
+				console.log("upload error code: " + error.code);
 			});
 		}, fail);
 	}, fail);
