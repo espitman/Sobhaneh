@@ -1,5 +1,17 @@
-* {
-	direction: rtl;
+.scroller-wrapper {
+	z-index: 1;
+	width: 100%;
+	overflow: hidden;
+}
+
+.scroller {
+	height: 100%;
+}
+
+.scroller ul {
+	width: 100%;
+	height: 100%;
+	text-align: center;
 }
 p {
 	text-align: justify;
@@ -18,6 +30,7 @@ p {
 ul.papers {
 	margin: 0;
 	padding: 0;
+	float: left;
 }
 ul.papers li {
 	list-style: none;
@@ -31,11 +44,14 @@ ul.papers li img {
 	width: 130px;
 	height: 196px;
 	-webkit-box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.75);
--moz-box-shadow:    6px 4px 6px rgba(0, 0, 0, 0.75);
-box-shadow:         6px 4px 6px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.75);
+	box-shadow: 6px 4px 6px rgba(0, 0, 0, 0.75);
 }
 ul.papers li h1 {
 	font-size: 12px;
-	color: #f4f4f4;	
+	color: #f4f4f4;
 	text-align: center;
 }
+
+
+

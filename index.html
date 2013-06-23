@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>صبحانه</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
-		<link rel="stylesheet" href="css/style.css" />
+<head>
+<title>صبحانه</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+<link rel="stylesheet" href="css/style.css?v=1.5" />
 
-		<script src="phonegap.js"></script>
-		<script src="js/jquery.js"></script>
-		<script src="js/jquery.mobile-1.3.1.min.js"></script>
-		<script src="js/jquery.imageready.js"></script>
-		
-		<script src="js/funcs.js"></script>
-		<script src="js/sobhaneh.js"></script>
+<script src="phonegap.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.3.1.min.js"></script>
+<script src="js/jquery.imageready.js"></script>
+<script src="js/iscroll.js"></script>
 
+<script src="js/funcs.js?v=1.5"></script>
+<script src="js/sobhaneh.js?v=1.5"></script>
+</head>
+<body>
 
-	</head>
-	<body>
+<div data-role="page" id="home">
 
-		<div data-role="page" id="home">
+	<div data-role="header">
+		<img class='hIcon' src="images/icon-36.png" />
+		<h1></h1>
+	</div>
 
-			<div data-role="header">
-				<img class='hIcon' src="images/icon-36.png" />
-				<h1></h1>
-			</div>
-
-			<div data-role="content">
-				<ul class="papers"></ul>
-			</div>
-
+	<div data-role="content" class="scroller-wrapper">
+		<div class="scroller">
+			<ul class="papers"></ul>
 		</div>
+	</div>
 
-	</body>
+</div>
+
+</body>
 </html>
