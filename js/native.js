@@ -43,7 +43,7 @@ function getRooAddress() {
 			exclusive : false
 		}, function gotFileEntry(fileEntry) {
 			var sPath = fileEntry.fullPath.replace("dummy.html", "");
-			$("body").prepend("<input type='hidden' id='rootAddress' value='"+rootAddress+"' />");
+			$("body").prepend("<input type='hidden' id='rootAddress' value='"+sPath+"' />");
 			fileEntry.remove();
 
 		}, fail);
