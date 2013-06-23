@@ -31,6 +31,7 @@ ul.papers {
 	margin: 0;
 	padding: 0;
 	float: left;
+	display: none;
 }
 ul.papers li {
 	list-style: none;
