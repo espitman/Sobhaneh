@@ -20,7 +20,8 @@ function getDayPapersCallback(data) {
 	for(var x in data) {
 		var folder = 'sobhaneh/'+data[x]["date_id"]+'/';
 		var src = "http://eboard.ir/sobhaneh/papers/"+data[x]["date_id"]+"/"+data[x]["image"];
-		
+		alert(rooAddress);
+		/*
 		createFolder(folder);
 		
 		if(!file_exists(rooAddress+data[x]["date_id"]+"/"+data[x]["image"])) {
@@ -30,7 +31,7 @@ function getDayPapersCallback(data) {
 			imgSrc = rooAddress+data[x]["date_id"]+"/"+data[x]["image"];
 		}
 		console.log(imgSrc);
-		
+		*/
 		
 		$("#home ul.papers").append("<li><img src='"+imgSrc+"' /><h1>"+data[x]["title"]+"</h1></li>");
 	}
