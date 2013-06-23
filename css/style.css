@@ -4,3 +4,13 @@
 p {
 	text-align: justify;
 }
+
+.ui-page {
+	margin: 0;
+	padding: 0;
+	background: #373737;
+}
+.hIcon {
+	float: left;
+	margin-top: 2px;
+}
