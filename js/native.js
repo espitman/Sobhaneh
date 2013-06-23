@@ -35,19 +35,19 @@ function downloadFile(folder, file, name) {
 }
 
 function getRooAddress() {
-	$("#rootAddress").remove();
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
+	if ($("#rootAddress").length == 0) {
+		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
+			fileSystem.root.getFile("dummy.html", {
+				create : true,
+				exclusive : false
+			}, function gotFileEntry(fileEntry) {
+				var sPath = fileEntry.fullPath.replace("dummy.html", "");
+				$("body").prepend("<input type='hidden' id='rootAddress' value='" + sPath + "' />");
+				fileEntry.remove();
 
-		fileSystem.root.getFile("dummy.html", {
-			create : true,
-			exclusive : false
-		}, function gotFileEntry(fileEntry) {
-			var sPath = fileEntry.fullPath.replace("dummy.html", "");
-			$("body").prepend("<input type='hidden' id='rootAddress' value='"+sPath+"' />");
-			fileEntry.remove();
-
+			}, fail);
 		}, fail);
-	}, fail);
+	}
 	return $("#rootAddress").val();
 }
 

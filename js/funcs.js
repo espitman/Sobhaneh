@@ -19,14 +19,13 @@ function getDayPapersCallback(data) {
 	var imgSrc = "";
 	$("#home ul.papers").empty();
 	var rootAddress = getRooAddress();
-	alert(rootAddress);
 	for (var x in data) {
 		var folder = 'sobhaneh/' + data[x]["date_id"] + '/';
 		var src = "http://eboard.ir/sobhaneh/papers/" + data[x]["date_id"] + "/" + data[x]["image"];
 
 		createFolder(folder);
 
-		if (!file_exists(rooAddress + data[x]["date_id"] + "/" + data[x]["image"])) {
+		if (!file_exists(rooAddress + 'sobhaneh/' + data[x]["date_id"] + "/" + data[x]["image"])) {
 			downloadFile(folder, src, data[x]["image"]);
 			imgSrc = src;
 		} else {
