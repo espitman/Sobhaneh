@@ -1,10 +1,10 @@
 function getDayPapers() {
 	$.ajax({
-		type : "POST",
-		url : "http://boum.ir/test/proxy.php",
-		dataType : "html",
+		type : "GET",
+		url : "http://eboard.ir/sobhaneh/index.php",
+		dataType : "json",
 		data : {
-			url : "http://google.com"
+			f : "getLastDayPapers"
 		},
 		async : true,
 		success : function(data) {
@@ -17,5 +17,10 @@ function getDayPapers() {
 
 function getDayPapersCallback(data) {
 	$.mobile.hidePageLoadingMsg();
-	$("#home").html(data);
+	console.log(data);
+	$("#home ul.papers").empty();
+	for(var x in data) {
+		$("#home ul.papers").append("<li><img src='"+data[x]["image"]+"' /><h1>"+data[x]["title"]+"</h1></li>");
+	}
+	
 }
