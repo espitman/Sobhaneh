@@ -35,7 +35,6 @@ function downloadFile(folder, file, name) {
 }
 
 function getRootAddress() {
-	return "SSS";
 	if ($("#rootAddress").length == 0) {
 		window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
 			fileSystem.root.getFile("dummy.html", {
