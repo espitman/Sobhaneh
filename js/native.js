@@ -38,7 +38,7 @@ function getRooAddress() {
 	$("#rootAddress").remove();
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
 
-		fileSystem.root.getFile(folder + "dummy.html", {
+		fileSystem.root.getFile("dummy.html", {
 			create : true,
 			exclusive : false
 		}, function gotFileEntry(fileEntry) {
