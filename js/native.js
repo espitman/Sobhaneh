@@ -45,13 +45,11 @@ function getRooAddress() {
 			var sPath = fileEntry.fullPath.replace("dummy.html", "");
 			rooAddress = sPath;
 			fileEntry.remove();
-			
+
 		}, fail);
 	}, fail);
 
 }
-
-
 
 function fail(evt) {
 	console.log(evt.target.error.code);
