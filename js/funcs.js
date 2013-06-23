@@ -25,6 +25,7 @@ function getDayPapersCallback(data) {
 		var src = "http://eboard.ir/sobhaneh/papers/" + data[x]["date_id"] + "/" + data[x]["image"];
 		imgSrc = src;
 		imgSrc = rooAddress + data[x]["date_id"] + "/" + data[x]["image"];
+		alert(imgSrc);
 		/*
 		createFolder(folder);
 
