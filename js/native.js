@@ -1,4 +1,3 @@
-rooAddress = getRooAddress();
 //==============================================
 function createFolder(name) {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
@@ -36,6 +35,7 @@ function downloadFile(folder, file, name) {
 }
 
 function getRooAddress() {
+	$("#rootAddress").remove();
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function onFileSystemSuccess(fileSystem) {
 
 		fileSystem.root.getFile(folder + "dummy.html", {
@@ -43,12 +43,12 @@ function getRooAddress() {
 			exclusive : false
 		}, function gotFileEntry(fileEntry) {
 			var sPath = fileEntry.fullPath.replace("dummy.html", "");
-			rooAddress = sPath;
+			$("body").prepend("<input type='hidden' id='rootAddress' value='"+rootAddress+"' />");
 			fileEntry.remove();
 
 		}, fail);
 	}, fail);
-
+	return $("#rootAddress").val();
 }
 
 function fail(evt) {
