@@ -18,7 +18,7 @@ function getDayPapers() {
 function getDayPapersCallback(data) {
 	$("#home ul.papers").empty();
 	for(var x in data) {
-		var folder = 'sobhaneh/'+data[x]["date_id"];
+		var folder = 'sobhaneh/'+data[x]["date_id"]+'/';
 		var src = "http://eboard.ir/sobhaneh/papers/"+data[x]["date_id"]+"/"+data[x]["image"];
 		
 		createFolder(folder);
