@@ -19,6 +19,7 @@ function getDayPapersCallback(data) {
 	var imgSrc = "";
 	$("#home ul.papers").empty();
 	var rootAddress = getRooAddress();
+	alert(rootAddress);
 	for (var x in data) {
 		var folder = 'sobhaneh/' + data[x]["date_id"] + '/';
 		var src = "http://eboard.ir/sobhaneh/papers/" + data[x]["date_id"] + "/" + data[x]["image"];

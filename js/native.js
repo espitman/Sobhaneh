@@ -41,7 +41,7 @@ function getRooAddress() {
 				create : true,
 				exclusive : false
 			}, function gotFileEntry(fileEntry) {
-				var sPath = fileEntry.fullPath.replace("dummy.html", "");
+				var sPath = fileEntry.toUrl.replace("dummy.html", "");
 				$("body").prepend("<input type='hidden' id='rootAddress' value='" + sPath + "' />");
 				fileEntry.remove();
 
