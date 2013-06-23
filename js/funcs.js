@@ -27,7 +27,7 @@ function getDayPapersCallback(data) {
 		if(!file_exists(rooAddress+data[x]["date_id"]+"/"+data[x]["image"])) {
 			imgSrc = src;	
 		} else {
-			imgSrc = rooAddress+data[x]["date_id"]+"/"+data[x]["image"]);
+			imgSrc = rooAddress+data[x]["date_id"]+"/"+data[x]["image"];
 		}
 		console.log(imgSrc);
 		
