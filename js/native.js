@@ -42,10 +42,9 @@ function getRooAddress() {
 			create : true,
 			exclusive : false
 		}, function gotFileEntry(fileEntry) {
-			var sPath = fileEntry.fullPath.replace("dummy.html", "");
+			var sPath = fileEntry.toURL.replace("dummy.html", "");
 			rooAddress = sPath;
 			fileEntry.remove();
-			
 		}, fail);
 	}, fail);
 

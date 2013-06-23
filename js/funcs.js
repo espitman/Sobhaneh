@@ -22,9 +22,9 @@ function getDayPapersCallback(data) {
 		var src = "http://eboard.ir/sobhaneh/papers/"+data[x]["date_id"]+"/"+data[x]["image"];
 		
 		createFolder(folder);
-		downloadFile(folder,src,data[x]["image"]);
 		
 		if(!file_exists(rooAddress+data[x]["date_id"]+"/"+data[x]["image"])) {
+			downloadFile(folder,src,data[x]["image"]);
 			imgSrc = src;	
 		} else {
 			imgSrc = rooAddress+data[x]["date_id"]+"/"+data[x]["image"];
