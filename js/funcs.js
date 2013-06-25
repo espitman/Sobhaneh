@@ -73,7 +73,10 @@ function showPaper(pid, date_id) {
 	} else {
 		alert('OK!');
 	}
+	
+	fc = JSON.parse(fc);
 	console.log(fc);
+	
 	for(var x in fc) {
 		console.log(fc[x]["title"]);
 	}
