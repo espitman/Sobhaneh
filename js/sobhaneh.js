@@ -9,7 +9,8 @@ document.addEventListener('deviceready', function(e) {
 $(document).on('pageshow', '#home', function() {
 
 	$.mobile.showPageLoadingMsg();
-	getDayPapers();
+	getDayPapers(0,"#home ul.papers",1);
+	getDayPapers(1,"#home ul.papers2",2);
 
 });
 
