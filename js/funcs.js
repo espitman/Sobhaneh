@@ -99,6 +99,13 @@ function showPaper(data, title) {
 		"height" : (dif - 60) + "px",
 		"margin-top" : (hh + 30) + "px"
 	});
+	
+	var vw = parseInt($(window).width());
+	var sw = parseInt($("#side-pages").width());
+	var dif = vw - sw;
+	$("#main-pages").css({
+		"width" : (dif - 30) + "px",
+	});
 
 	var elm = "#apaper ul";
 	var count = $(elm + " li").length;

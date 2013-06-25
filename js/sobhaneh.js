@@ -22,7 +22,7 @@ $(document).on('click', '#home .box li', function() {
 
 $(document).on('pageshow', '#apaper', function() {
 	
-
+	
 });
 
 $(document).on('click', '#apaper #side-pages ul li', function() {
