@@ -51,7 +51,7 @@ ul.papers li img, ul.papers2 li img {
 #home .box h1.hbox {
 	color: #FFF;
 	direction: rtl;
-	font-size: 22px;
+	font-size: 18px;
 	background: url("../images/top.png");
 	width: 239px;
 	text-align: center;
@@ -59,7 +59,7 @@ ul.papers li img, ul.papers2 li img {
 	line-height: 30px;
 	float: right;
 	position: absolute;
-	margin-top: -45px;
+	margin-top: -35px;
 	z-index: 10;
 	left: 100%;
 	margin-left: -254px;
@@ -71,10 +71,10 @@ ul.papers li h1, ul.papers2 li h1 {
 	background: none !important;
 }
 #home .box {
-	height: 240px;
-	padding-top: 40px;
+	height: 230px;
+	padding-top: 30px;
 	width: 100%;
-	margin-bottom: 18px;
+	margin-bottom: 10px;
 	background: #232323;
 	overflow: hidden;
 	-webkit-box-shadow: 8px 8px 7px rgba(50, 50, 50, 1);
