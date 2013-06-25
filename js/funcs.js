@@ -64,7 +64,8 @@ function showPaper(pid, date_id) {
 	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
 	var rootAddress = getRootAddress();
 	createFolder(folder);
-	if (!file_exists(rootAddress + folder + 'paper.json')) {
+	alert(rootAddress +'/'+ folder + 'paper.json');
+	if (!file_exists(rootAddress +'/'+ folder + 'paper.json')) {
 		alert('file not exists');
 	} else {
 		alert('file exists');
