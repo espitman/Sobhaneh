@@ -126,4 +126,6 @@ ul.papers li h1, ul.papers2 li h1 {
 	direction: rtl;
 	list-style: none;
 	font-size: 12px;
+	color: #FFF;
+	padding: 5px;
 }
