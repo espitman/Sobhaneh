@@ -118,3 +118,12 @@ ul.papers li h1, ul.papers2 li h1 {
 	position: absolute;
 	top: 0;
 }
+#main-pages ul.titles {
+	margin: 0;
+	padding: 0;
+}
+#main-pages ul.titles li {
+	direction: rtl;
+	list-style: none;
+	font-size: 12px;
+}

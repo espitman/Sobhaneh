@@ -26,6 +26,7 @@ function getDayPapersCallback(data, elm, scid) {
 		imgSrc = src;
 
 		//-----------------------------------
+		/*
 		var rootAddress = getRootAddress();
 		//alert(rootAddress);
 		createFolder(folder);
@@ -35,6 +36,7 @@ function getDayPapersCallback(data, elm, scid) {
 		} else {
 			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
 		}
+		*/
 		//-----------------------------------
 
 		for ( i = 1; i < 20; i++) {
