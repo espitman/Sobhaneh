@@ -128,14 +128,22 @@ function getPageTitles(pageId) {
 	$.mobile.showPageLoadingMsg();
 	$.ajax({
 		type : "POST",
-		url : "http://eboard.ir/sobhaneh/main/getPageNews/"+pageId+"/",
+		url : "http://eboard.ir/sobhaneh/main/getPageNews/" + pageId + "/",
 		dataType : "json",
 		async : true,
 		success : function(data) {
 			console.log(data);
-			$.mobile.hidePageLoadingMsg();
+			showPageTitles(data);
 		},
 		error : function(data) {
 		}
 	});
+}
+
+function showPageTitles(data) {
+	$("#apaper #main-pages ul.titles").empty();
+	for (var x in data) {
+		$("#apaper #main-pages ul.titles").append("<li data-id='" + data[x]["id"] + "'>" + data[x]["title"] + "</li>")
+	}
+	$.mobile.hidePageLoadingMsg();
 }
