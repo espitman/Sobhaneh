@@ -65,12 +65,14 @@ function showPaper(pid, date_id) {
 	var rootAddress = getRootAddress();
 	createFolder(folder);
 	var fc = file_get_contents(rootAddress + folder + 'paper.json');
-	console.log(fc);
 	
-	if (!file_exists(rootAddress + folder + 'paper.json')) {
+	if (!fc) {
 		var src = "http://eboard.ir/sobhaneh/main/getPaper/"+pid+"/"; 
-		downloadFile(folder, src, 'paper.json');				
+		downloadFile(folder, src, 'paper.json');
+		fc = file_get_contents(rootAddress + folder + 'paper.json');
 	} else {
 		alert('OK!');
 	}
+	console.log(fc);
+	console.log("name::"+fc["name"]);
 }
