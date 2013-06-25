@@ -74,5 +74,7 @@ function showPaper(pid, date_id) {
 		alert('OK!');
 	}
 	console.log(fc);
-	console.log("name::"+fc["name"]);
+	for(var x in fc) {
+		console.log(fc[x]["title"]);
+	}
 }
