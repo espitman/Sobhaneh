@@ -1,4 +1,4 @@
-function getDayPapers(day,elm,scid) {
+function getDayPapers(day, elm, scid) {
 	$.mobile.showPageLoadingMsg();
 	$.ajax({
 		type : "POST",
@@ -9,7 +9,7 @@ function getDayPapers(day,elm,scid) {
 		dataType : "json",
 		async : true,
 		success : function(data) {
-			getDayPapersCallback(data,elm,scid);
+			getDayPapersCallback(data, elm, scid);
 			$.mobile.hidePageLoadingMsg();
 		},
 		error : function(data) {
@@ -17,16 +17,15 @@ function getDayPapers(day,elm,scid) {
 	});
 }
 
-
-function getDayPapersCallback(data,elm,scid) {
+function getDayPapersCallback(data, elm, scid) {
 	var imgSrc = "";
 	$(elm).empty();
 	for (var x in data) {
 		var folder = 'sobhaneh/' + data[x]["date_id"] + '/';
 		var src = data[x]["image"];
 		imgSrc = src;
-	
-		/*
+
+		//-----------------------------------
 		var rootAddress = getRootAddress();
 		//alert(rootAddress);
 		createFolder(folder);
@@ -36,28 +35,38 @@ function getDayPapersCallback(data,elm,scid) {
 		} else {
 			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
 		}
-		*/
-		
-		console.log(imgSrc);
-		for(i=1;i<20;i++) {
-			$(elm).append("<li><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
+		//-----------------------------------
+
+		for ( i = 1; i < 20; i++) {
+			$(elm).append("<li data-date='" + data[x]["date_id"] + "' data-pid='" + data[x]["id"] + "'><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
 		}
 	}
-	var count = $(elm+" li").length;
-	var width = count * (parseInt($(elm+" li").width()) + 24);
-	
-	$("#home .scroller"+scid).css({
+	var count = $(elm + " li").length;
+	var width = count * (parseInt($(elm + " li").width()) + 24);
+
+	$("#home .scroller" + scid).css({
 		"width" : width + "px"
 	});
-	new IScroll('#home .scroller-wrapper'+scid, {
+	new IScroll('#home .scroller-wrapper' + scid, {
 		scrollX : true,
 		scrollY : false,
 		mouseWheel : true
 	});
-	
-	
+
 	$(elm).imageready(function() {
 		$(elm).fadeIn();
 	});
-	
+
+}
+
+//=====================================================================================================
+function showPaper(pid, date_id) {
+	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
+	var rootAddress = getRootAddress();
+	createFolder(folder);
+	if (!file_exists(rootAddress + folder + 'paper.json')) {
+		alert('file not exists');
+	} else {
+		alert('file exists');
+	}
 }
