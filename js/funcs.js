@@ -38,7 +38,6 @@ function getDayPapersCallback(data,elm,scid) {
 			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
 		}
 		
-		
 		console.log(imgSrc);
 		for(i=1;i<20;i++) {
 			$(elm).append("<li><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
