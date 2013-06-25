@@ -64,7 +64,9 @@ function showPaper(pid, date_id) {
 	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
 	var rootAddress = getRootAddress();
 	createFolder(folder);
-	alert(rootAddress + folder + 'paper.json');
+	var fc = file_get_contents(rootAddress + folder + 'paper.json');
+	console.log(fc);
+	
 	if (!file_exists(rootAddress + folder + 'paper.json')) {
 		var src = "http://eboard.ir/sobhaneh/main/getPaper/"+pid+"/"; 
 		downloadFile(folder, src, 'paper.json');				
