@@ -38,7 +38,7 @@ function getDayPapersCallback(data, elm, scid) {
 		//-----------------------------------
 
 		for ( i = 1; i < 20; i++) {
-			$(elm).append("<li data-date='" + data[x]["date_id"] + "' data-pid='" + data[x]["id"] + "'><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
+			$(elm).append("<li data-title='" + data[x]["title"] + "' data-date='" + data[x]["date_id"] + "' data-pid='" + data[x]["id"] + "'><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
 		}
 	}
 	var count = $(elm + " li").length;
@@ -60,7 +60,7 @@ function getDayPapersCallback(data, elm, scid) {
 }
 
 //=====================================================================================================
-function getPaperData(pid, date_id) {
+function getPaperData(pid, date_id, title) {
 	$.mobile.showPageLoadingMsg();
 	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
 	var rootAddress = getRootAddress();
@@ -76,14 +76,15 @@ function getPaperData(pid, date_id) {
 	}
 
 	fc = JSON.parse(fc);
-	showPaper(fc);
+	showPaper(fc, title);
 }
 
-function showPaper(data) {
+function showPaper(data, title) {
+	$("#apaper .ui-header h1.ui-title").html(title);
 	console.log(data);
 	for (var x in data) {
 		for ( i = 1; i < 20; i++) {
-			$("#apaper #side-pages ul").append("<li><img src='" + data[x]["image"] + "' /></li>")
+			$("#apaper #side-pages ul").append("<li data-id='" + data[x]["id"] + "'><img src='" + data[x]["image"] + "' /><h1>" + data[x]["title"] + "</h1></li>")
 		}
 	}
 
@@ -94,9 +95,9 @@ function showPaper(data) {
 	var vh = parseInt($(window).height());
 	var hh = parseInt($(".ui-header").height());
 	var dif = vh - hh;
-	$("#side-pages").css({
+	$("#side-pages,#main-pages").css({
 		"height" : (dif - 60) + "px",
-		"margin-top" : (hh+30) + "px"
+		"margin-top" : (hh + 30) + "px"
 	});
 
 	var elm = "#apaper ul";
