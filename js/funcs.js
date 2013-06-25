@@ -66,8 +66,9 @@ function showPaper(pid, date_id) {
 	createFolder(folder);
 	alert(rootAddress + folder + 'paper.json');
 	if (!file_exists(rootAddress + folder + 'paper.json')) {
-		alert('file not exists');
+		var src = "http://eboard.ir/sobhaneh/main/getPaper/"+pid+"/", 
+		downloadFile(folder, src, 'paper.json');				
 	} else {
-		alert('file exists');
+		alert('OK!');
 	}
 }
