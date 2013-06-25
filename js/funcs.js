@@ -80,7 +80,7 @@ function getPaperData(pid, date_id, title) {
 }
 
 function showPaper(data, title) {
-	$("#apaper .ui-header h1.ui-title").html(title);
+	$("#apaper h1.ui-title").html(title);
 	console.log(data);
 	for (var x in data) {
 		for ( i = 1; i < 20; i++) {
@@ -99,7 +99,7 @@ function showPaper(data, title) {
 		"height" : (dif - 60) + "px",
 		"margin-top" : (hh + 30) + "px"
 	});
-	
+
 	var vw = parseInt($(window).width());
 	var sw = parseInt($("#side-pages").width());
 	var dif = vw - sw;
@@ -121,4 +121,21 @@ function showPaper(data, title) {
 	});
 
 	$.mobile.hidePageLoadingMsg();
+}
+
+//=====================================================================================================
+function getPageTitles(pageId) {
+	$.mobile.showPageLoadingMsg();
+	$.ajax({
+		type : "POST",
+		url : "http://eboard.ir/sobhaneh/main/getPageNews/"+pageId+"/",
+		dataType : "json",
+		async : true,
+		success : function(data) {
+			console.log(data);
+			$.mobile.hidePageLoadingMsg();
+		},
+		error : function(data) {
+		}
+	});
 }

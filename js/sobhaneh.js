@@ -27,5 +27,5 @@ $(document).on('pageshow', '#apaper', function() {
 
 $(document).on('click', '#apaper #side-pages ul li', function() {
 	var id = $(this).attr("data-id");
-	alert(id);
+	getPageTitles(id);
 });
