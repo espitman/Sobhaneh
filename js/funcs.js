@@ -25,14 +25,13 @@ function getDayPapersCallback(data,elm,scid) {
 		var folder = 'sobhaneh/' + data[x]["date_id"] + '/';
 		var src = data[x]["image"];
 		imgSrc = src;
-		
+	
 		
 		var rootAddress = getRootAddress();
-		alert(rootAddress);
-				
+		//alert(rootAddress);
 		createFolder(folder);
 		if (!file_exists(rootAddress + 'sobhaneh/' + data[x]["date_id"] + "/" + data[x]["image_name"])) {
-			downloadFile(folder, src, data[x]["image"]);
+			downloadFile(folder, src, data[x]["image_name"]);
 			imgSrc = src;
 		} else {
 			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
