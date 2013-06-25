@@ -82,8 +82,11 @@ function getPaperData(pid, date_id) {
 function showPaper(data) {
 	console.log(data);
 	for(var x in data) {
-		$("#apaper .mcontent").append("<h3>"+data[x]["title"]+"</h3><img src='"+data[x]["image"]+"' /><hr/>")
+		for ( i = 1; i < 20; i++) {
+			$("#apaper #side-pages ul").append("<li><img src='"+data[x]["image"]+"' /></li>")
+		}
 	}
+	
 	$.mobile.changePage($("#apaper"), {transition: "slide"});
 	$.mobile.hidePageLoadingMsg();
 }

@@ -18,3 +18,20 @@ $(document).on('click', '#home .box li', function() {
 	var pid = $(this).attr("data-pid");
 	getPaperData(pid,date_id);
 });
+
+$(document).on('pageshow', '#apaper', function() {
+	var elm = "#apaper ul";
+	
+	var count = $(elm + " li").length;
+	var height = count * (parseInt($(elm + " li").height()) + 20);
+	
+	$("#apaper .scroller3").css({
+		"height" : height + "px"
+	});
+	new IScroll('#apaper #side-pages' , {
+		scrollX : false,
+		scrollY : true,
+		mouseWheel : true
+	});
+
+});

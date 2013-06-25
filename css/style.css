@@ -81,4 +81,30 @@ ul.papers li h1, ul.papers2 li h1 {
 	-moz-box-shadow:    8px 8px 7px rgba(50, 50, 50, 1);
 	box-shadow:         8px 8px 7px rgba(50, 50, 50, 1);
 }
+#side-pages {
+	width: 25%;
+	margin-top: 5%;
+	position: absolute;
+	top: 0;
+	float: right;
+	right: 0;
+	height: 85%;
+	background: #232323;
+	-webkit-box-shadow: 8px 8px 7px rgba(50, 50, 50, 1);
+	-moz-box-shadow:    8px 8px 7px rgba(50, 50, 50, 1);
+	box-shadow:         8px 8px 7px rgba(50, 50, 50, 1);
+	overflow: hidden;
+}
+#side-pages ul {
+	margin: 0;
+	padding: 0;
+}
+#side-pages ul li {
+	list-style: none;
+	padding:10px;
+	text-align: center;
+}
+#side-pages ul li img {
+	max-width: 100%;
 
+}
