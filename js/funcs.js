@@ -1,11 +1,8 @@
 function getDayPapers() {
 	$.ajax({
 		type : "GET",
-		url : "http://eboard.ir/sobhaneh/index.php",
+		url : "http://eboard.ir/sobhaneh/main/getLastDayPapers/",
 		dataType : "json",
-		data : {
-			f : "getLastDayPapers"
-		},
 		async : true,
 		success : function(data) {
 			getDayPapersCallback(data);
@@ -22,16 +19,16 @@ function getDayPapersCallback(data) {
 	//alert(rootAddress);
 	for (var x in data) {
 		var folder = 'sobhaneh/' + data[x]["date_id"] + '/';
-		var src = "http://eboard.ir/sobhaneh/papers/" + data[x]["date_id"] + "/" + data[x]["image"];
+		var src = data[x]["image"];
 		imgSrc = src;
 		
 		createFolder(folder);
 
-		if (!file_exists(rootAddress + 'sobhaneh/' + data[x]["date_id"] + "/" + data[x]["image"])) {
+		if (!file_exists(rootAddress + 'sobhaneh/' + data[x]["date_id"] + "/" + data[x]["image_name"])) {
 			downloadFile(folder, src, data[x]["image"]);
 			imgSrc = src;
 		} else {
-			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image"];
+			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
 		}
 		console.log(imgSrc);
 		$("#home ul.papers").append("<li><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
