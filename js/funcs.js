@@ -61,7 +61,7 @@ function getDayPapersCallback(data, elm, scid) {
 
 //=====================================================================================================
 function getPaperData(pid, date_id) {
-	$.mobile.showPageLoadingMsg();	
+	$.mobile.showPageLoadingMsg();
 	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
 	var rootAddress = getRootAddress();
 	createFolder(folder);
@@ -72,7 +72,7 @@ function getPaperData(pid, date_id) {
 		downloadFile(folder, src, 'paper.json');
 		fc = file_get_contents(rootAddress + folder + 'paper.json');
 	} else {
-		alert('OK!');
+		//alert('OK!');
 	}
 
 	fc = JSON.parse(fc);
@@ -81,12 +81,36 @@ function getPaperData(pid, date_id) {
 
 function showPaper(data) {
 	console.log(data);
-	for(var x in data) {
+	for (var x in data) {
 		for ( i = 1; i < 20; i++) {
-			$("#apaper #side-pages ul").append("<li><img src='"+data[x]["image"]+"' /></li>")
+			$("#apaper #side-pages ul").append("<li><img src='" + data[x]["image"] + "' /></li>")
 		}
 	}
-	
-	$.mobile.changePage($("#apaper"), {transition: "slide"});
+
+	$.mobile.changePage($("#apaper"), {
+		transition : "slide"
+	});
+
+	var vh = parseInt($(window).height());
+	var hh = parseInt($(".ui-header").height());
+	var dif = vh - hh;
+	$("#side-pages").css({
+		"height" : (dif - 60) + "px",
+		"margin-top" : (hh+30) + "px"
+	});
+
+	var elm = "#apaper ul";
+	var count = $(elm + " li").length;
+	var height = count * (parseInt($(elm + " li").height()) + 20);
+
+	$("#apaper .scroller3").css({
+		"height" : height + "px"
+	});
+	new IScroll('#apaper #side-pages', {
+		scrollX : false,
+		scrollY : true,
+		mouseWheel : true
+	});
+
 	$.mobile.hidePageLoadingMsg();
 }
