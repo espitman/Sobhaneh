@@ -16,5 +16,5 @@ $(document).on('pageshow', '#home', function() {
 $(document).on('click', '#home .box li', function() {
 	var date_id = $(this).attr("data-pid");
 	var pid = $(this).attr("data-pid");
-	showPaper(pid,date_id);
+	getPaperData(pid,date_id);
 });

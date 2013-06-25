@@ -60,24 +60,30 @@ function getDayPapersCallback(data, elm, scid) {
 }
 
 //=====================================================================================================
-function showPaper(pid, date_id) {
+function getPaperData(pid, date_id) {
+	$.mobile.showPageLoadingMsg();	
 	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
 	var rootAddress = getRootAddress();
 	createFolder(folder);
 	var fc = file_get_contents(rootAddress + folder + 'paper.json');
-	
+
 	if (!fc) {
-		var src = "http://eboard.ir/sobhaneh/main/getPaper/"+pid+"/"; 
+		var src = "http://eboard.ir/sobhaneh/main/getPaper/" + pid + "/";
 		downloadFile(folder, src, 'paper.json');
 		fc = file_get_contents(rootAddress + folder + 'paper.json');
 	} else {
 		alert('OK!');
 	}
-	
+
 	fc = JSON.parse(fc);
-	console.log(fc);
-	
-	for(var x in fc) {
-		console.log(fc[x]["title"]);
+	showPaper(fc);
+}
+
+function showPaper(data) {
+	console.log(data);
+	for(var x in data) {
+		$("#apaper .mcontent").append("<h3>"+data[x]["title"]+"</h3><img src='"+data[x]["image"]+"' /><hr/>")
 	}
+	$.mobile.changePage($("#apaper"), {transition: "slide"});
+	$.mobile.hidePageLoadingMsg();
 }
