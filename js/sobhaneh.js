@@ -1,3 +1,18 @@
+var iNav = new navigation();
+
+$(document).on('pageshow', 'div[data-role="page"]', function() {
+	var currentPage = ($(this).attr("id"));
+	iNav.push(currentPage);
+});
+
+$(document).on('click', '#button_back', function() {
+	$.mobile.changePage("#"+iNav.pop(), {
+		transition : "slide"
+	});
+	
+	return false;
+});
+
 document.addEventListener('touchmove', function(e) {
 	e.preventDefault();
 }, false);
