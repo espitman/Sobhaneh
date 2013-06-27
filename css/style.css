@@ -160,6 +160,11 @@ ul.papers li h1, ul.papers2 li h1 {
 	color: #FFF;
 	font-size: 14px;
 	line-height: 2;
+	
+	position: absolute;
+	overflow: hidden;
+	height: 89%;
+	margin-right: 10px;
 }
 #anews #box-news h1 {
 	direction: rtl;
@@ -169,4 +174,5 @@ ul.papers li h1, ul.papers2 li h1 {
 #anews #box-news .main-img {
 	float: left;
 	margin: 10px;
+	max-width: 80%;
 }

@@ -189,13 +189,23 @@ function showNews(data) {
 	$.mobile.changePage($("#anews"), {
 		transition : "slide"
 	});	
-	$("#anews .mcontent #box-news ").empty();
-	$("#anews .mcontent #box-news ").append("<h2>"+data[0]["up_title"]+"</h2>");
-	$("#anews .mcontent #box-news ").append("<h1>"+data[0]["title"]+"</h1>");
+	$("#anews .mcontent #box-news .scroller4 #show-news").empty();
+	$("#anews .mcontent #box-news .scroller4 #show-news").append("<h2>"+data[0]["up_title"]+"</h2>");
+	$("#anews .mcontent #box-news .scroller4 #show-news").append("<h1>"+data[0]["title"]+"</h1>");
 	if(data[0]["image"] && data[0]["image"] != "") {
-		$("#anews .mcontent #box-news").append("<img class='main-img' src='"+data[0]["image"]+"' />");
+		$("#anews .mcontent #box-news .scroller4 #show-news").append("<img class='main-img' src='"+data[0]["image"]+"' />");
 	}
-	$("#anews .mcontent  #box-news").append(data[0]["text"]);
+	$("#anews .mcontent  #box-news .scroller4 #show-news").append(data[0]["text"]);
+	
+	$("#anews .scroller4").css({
+		"height" : $("#show-news").height()
+	});
+	new IScroll('#anews #box-news', {
+		scrollX : false,
+		scrollY : true,
+		mouseWheel : true
+	});
+	
 		
 	$.mobile.hidePageLoadingMsg();
 }
