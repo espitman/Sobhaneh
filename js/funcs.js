@@ -11,7 +11,6 @@ function getDayPapers(day, elm, scid) {
 		async : true,
 		success : function(data) {
 			getDayPapersCallback(data, elm, scid);
-			$.mobile.hidePageLoadingMsg();
 		},
 		error : function(data) {
 		}
@@ -58,6 +57,7 @@ function getDayPapersCallback(data, elm, scid) {
 
 	$(elm).imageready(function() {
 		$(elm).fadeIn();
+		$.mobile.hidePageLoadingMsg();
 	});
 
 }
