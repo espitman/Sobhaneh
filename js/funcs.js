@@ -1,4 +1,5 @@
 function getDayPapers(day, elm, scid) {
+	
 	$.mobile.showPageLoadingMsg();
 	$.ajax({
 		type : "POST",
@@ -39,9 +40,9 @@ function getDayPapersCallback(data, elm, scid) {
 		*/
 		//-----------------------------------
 
-		for ( i = 1; i < 20; i++) {
+		//for ( i = 1; i < 20; i++) {
 			$(elm).append("<li data-title='" + data[x]["title"] + "' data-date='" + data[x]["date_id"] + "' data-pid='" + data[x]["id"] + "'><img src='" + imgSrc + "' /><h1>" + data[x]["title"] + "</h1></li>");
-		}
+		//}
 	}
 	var count = $(elm + " li").length;
 	var width = count * (parseInt($(elm + " li").width()) + 24);
@@ -99,44 +100,46 @@ function showPaper(data, title) {
 	$("#apaper #side-pages ul").empty();
 	$("#apaper #main-pages ul").empty();
 	for (var x in data) {
-		for ( i = 1; i < 20; i++) {
+		//for ( i = 1; i < 20; i++) {
 			$("#apaper #side-pages ul").append("<li data-id='" + data[x]["id"] + "'><img src='" + data[x]["image"] + "' /><h1>" + data[x]["title"] + "</h1></li>")
-		}
+		//}
 	}
 
-	$.mobile.changePage($("#apaper"), {
-		transition : "slide"
+	$("#apaper #side-pages ul").imageready(function() {
+		$.mobile.changePage($("#apaper"), {
+			transition : "slide"
+		});
+	
+		var vh = parseInt($(window).height());
+		var hh = parseInt($(".ui-header").height());
+		var dif = vh - hh;
+		$("#side-pages,#main-pages").css({
+			"height" : (dif - 60) + "px",
+			"margin-top" : (hh + 30) + "px"
+		});
+	
+		var vw = parseInt($(window).width());
+		var sw = parseInt($("#side-pages").width());
+		var dif = vw - sw;
+		$("#main-pages").css({
+			"width" : (dif - 30) + "px",
+		});
+	
+		var elm = "#apaper ul";
+		var count = $(elm + " li").length;
+		var height = count * (parseInt($(elm + " li").height()) + 20);
+	
+		$("#apaper .scroller3").css({
+			"height" : height + "px"
+		});
+		new IScroll('#apaper #side-pages', {
+			scrollX : false,
+			scrollY : true,
+			mouseWheel : true
+		});
+	
+		$.mobile.hidePageLoadingMsg();
 	});
-
-	var vh = parseInt($(window).height());
-	var hh = parseInt($(".ui-header").height());
-	var dif = vh - hh;
-	$("#side-pages,#main-pages").css({
-		"height" : (dif - 60) + "px",
-		"margin-top" : (hh + 30) + "px"
-	});
-
-	var vw = parseInt($(window).width());
-	var sw = parseInt($("#side-pages").width());
-	var dif = vw - sw;
-	$("#main-pages").css({
-		"width" : (dif - 30) + "px",
-	});
-
-	var elm = "#apaper ul";
-	var count = $(elm + " li").length;
-	var height = count * (parseInt($(elm + " li").height()) + 20);
-
-	$("#apaper .scroller3").css({
-		"height" : height + "px"
-	});
-	new IScroll('#apaper #side-pages', {
-		scrollX : false,
-		scrollY : true,
-		mouseWheel : true
-	});
-
-	$.mobile.hidePageLoadingMsg();
 }
 
 //=====================================================================================================
@@ -183,13 +186,16 @@ function getNews(id) {
 }
 
 function showNews(data) {
-	console.log(data);
 	$.mobile.changePage($("#anews"), {
 		transition : "slide"
 	});	
-	$("#anews .mcontent").empty();
-	$("#anews .mcontent").append("<h2>"+data[0]["up_title"]+"</h2>");
-	$("#anews .mcontent").append("<h1>"+data[0]["title"]+"</h1>");
+	$("#anews .mcontent #box-news ").empty();
+	$("#anews .mcontent #box-news ").append("<h2>"+data[0]["up_title"]+"</h2>");
+	$("#anews .mcontent #box-news ").append("<h1>"+data[0]["title"]+"</h1>");
+	if(data[0]["image"] && data[0]["image"] != "") {
+		$("#anews .mcontent #box-news").append("<img class='main-img' src='"+data[0]["image"]+"' />");
+	}
+	$("#anews .mcontent  #box-news").append(data[0]["text"]);
 		
 	$.mobile.hidePageLoadingMsg();
 }
