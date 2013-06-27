@@ -29,3 +29,8 @@ $(document).on('click', '#apaper #side-pages ul li', function() {
 	var id = $(this).attr("data-id");
 	getPageTitles(id);
 });
+
+$(document).on('click', '#apaper #main-pages ul.titles li', function() {
+	var id = $(this).attr("data-id");
+	getNews(id);
+});

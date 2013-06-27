@@ -31,10 +31,10 @@ function getDayPapersCallback(data, elm, scid) {
 		//alert(rootAddress);
 		createFolder(folder);
 		if (!file_exists(rootAddress + 'sobhaneh/' + data[x]["date_id"] + "/" + data[x]["image_name"])) {
-			downloadFile(folder, src, data[x]["image_name"]);
-			imgSrc = src;
+		downloadFile(folder, src, data[x]["image_name"]);
+		imgSrc = src;
 		} else {
-			imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
+		imgSrc = rootAddress + data[x]["date_id"] + "/" + data[x]["image_name"];
 		}
 		*/
 		//-----------------------------------
@@ -64,26 +64,38 @@ function getDayPapersCallback(data, elm, scid) {
 //=====================================================================================================
 function getPaperData(pid, date_id, title) {
 	$.mobile.showPageLoadingMsg();
-	var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
-	var rootAddress = getRootAddress();
-	createFolder(folder);
-	var fc = file_get_contents(rootAddress + folder + 'paper.json');
+	/*
+	 var folder = 'sobhaneh/' + date_id + '/' + pid + '/';
+	 var rootAddress = getRootAddress();
+	 createFolder(folder);
+	 var fc = file_get_contents(rootAddress + folder + 'paper.json');
 
-	if (!fc) {
-		var src = "http://eboard.ir/sobhaneh/main/getPaper/" + pid + "/";
-		downloadFile(folder, src, 'paper.json');
-		fc = file_get_contents(rootAddress + folder + 'paper.json');
-	} else {
-		//alert('OK!');
-	}
+	 if (!fc) {
+	 var src = "http://eboard.ir/sobhaneh/main/getPaper/" + pid + "/";
+	 downloadFile(folder, src, 'paper.json');
+	 fc = file_get_contents(rootAddress + folder + 'paper.json');
+	 } else {
+	 //alert('OK!');
+	 }
 
-	fc = JSON.parse(fc);
-	showPaper(fc, title);
+	 fc = JSON.parse(fc);
+	 */
+	$.ajax({
+		type : "POST",
+		url : "http://eboard.ir/sobhaneh/main/getPaper/" + pid + "/",
+		dataType : "json",
+		async : true,
+		success : function(data) {
+			showPaper(data, title);
+		},
+		error : function(data) {
+		}
+	});
+
 }
 
 function showPaper(data, title) {
 	$("#apaper h1.ui-title").html(title);
-	console.log(data);
 	for (var x in data) {
 		for ( i = 1; i < 20; i++) {
 			$("#apaper #side-pages ul").append("<li data-id='" + data[x]["id"] + "'><img src='" + data[x]["image"] + "' /><h1>" + data[x]["title"] + "</h1></li>")
@@ -134,7 +146,6 @@ function getPageTitles(pageId) {
 		dataType : "json",
 		async : true,
 		success : function(data) {
-			console.log(data);
 			showPageTitles(data);
 		},
 		error : function(data) {
@@ -147,5 +158,36 @@ function showPageTitles(data) {
 	for (var x in data) {
 		$("#apaper #main-pages ul.titles").append("<li data-id='" + data[x]["id"] + "'>" + data[x]["title"] + "</li>")
 	}
+	$.mobile.hidePageLoadingMsg();
+}
+
+//=====================================================================================================s
+function getNews(id) {
+	$.mobile.showPageLoadingMsg();
+	$.ajax({
+		type : "POST",
+		url : "http://eboard.ir/sobhaneh/main/getNews/" + id + "/",
+		dataType : "json",
+		data : {
+			id : id
+		},
+		async : true,
+		success : function(data) {
+			showNews(data);
+		},
+		error : function(data) {
+		}
+	});
+}
+
+function showNews(data) {
+	console.log(data);
+	$.mobile.changePage($("#anews"), {
+		transition : "slide"
+	});	
+	$("#anews .mcontent").empty();
+	$("#anews .mcontent").append("<h2>"+data[0]["up_title"]+"</h2>");
+	$("#anews .mcontent").append("<h1>"+data[0]["title"]+"</h1>");
+		
 	$.mobile.hidePageLoadingMsg();
 }

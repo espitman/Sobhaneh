@@ -129,3 +129,13 @@ ul.papers li h1, ul.papers2 li h1 {
 	color: #FFF;
 	padding: 5px;
 }
+#anews h2 {
+	direction: rtl;
+	color: #FFF;
+	font-size: 16px;
+}
+#anews h1 {
+	direction: rtl;
+	color: #FFF;
+	font-size: 24px;
+}
