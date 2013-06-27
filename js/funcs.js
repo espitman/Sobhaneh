@@ -96,6 +96,8 @@ function getPaperData(pid, date_id, title) {
 
 function showPaper(data, title) {
 	$("#apaper h1.ui-title").html(title);
+	$("#apaper #side-pages ul").empty();
+	$("#apaper #main-pages ul").empty();
 	for (var x in data) {
 		for ( i = 1; i < 20; i++) {
 			$("#apaper #side-pages ul").append("<li data-id='" + data[x]["id"] + "'><img src='" + data[x]["image"] + "' /><h1>" + data[x]["title"] + "</h1></li>")
